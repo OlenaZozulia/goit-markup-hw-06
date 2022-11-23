@@ -21,7 +21,7 @@
   --portfolio-list-gap: 30px;
   --card-outline-color: #eeeeee;
   --icon-color: #afb1b8;
-  --animation-transform: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-transform: 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -750,7 +750,7 @@ img {
   padding-left: 16px;
   background-color: var(--background-hf-color);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.6);
   border-radius: 4px;
 }
 
@@ -811,8 +811,8 @@ img {
 }
 
 .backdrop.is-hidden .modal {
-  opacity: 0;
   transform: translate(-50%, -50%) scale(0.5);
+  transition: transform var(--animation-transform), opacity var(--animation-transform);
 }
 
 .modal-btn {
@@ -820,6 +820,7 @@ img {
   top: 8px;
   right: 8px;
   padding: 0;
+  margin: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -828,22 +829,27 @@ img {
   border-radius: 50%;
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  transition: box-shadow var(--animation-transform);
   cursor: pointer;
 }
+
+.modal-btn:focus .modal-icon-btn,
+.modal-btn:hover .modal-icon-btn {
+  fill: var(--accent-text-color);
+  transition: fill var(--animation-transform);
+}
+
 .modal-icon {
   fill: var(--logo-studioh-color);
 }
 
 .modal-strong-text {
+  display: block;
   padding-top: 40px;
-  padding-left: 40px;
+  text-align: center;
   color: var(--primary-text-color);
   font-weight: 700;
   font-size: 20px;
   line-height: calc(23.44 / 20);
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
@@ -883,7 +889,7 @@ img {
   top: 0;
   left: 0;
   left: 12px;
-  transform: translateY(50%);
+  transform: translateY(100%);
   cursor: pointer;
 }
 
@@ -930,7 +936,7 @@ img {
 .modal-form-message:hover,
 .modal-form-message:focus {
   outline-color: var(--accent-text-color);
-
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -960,7 +966,7 @@ img {
 }
 
 .modal-form-checkbox:checked {
-  outline: 2px solid var(--accent-text-color);
+  border: 2px solid var(--accent-text-color);
   background-color: var(--accent-text-color);
   background-size: 11px 8px;
   background-image: url("data:image/svg+xml,%3Csvg width='13' height='10' viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.95703 4.75166L1.88825 4.68604L1.81923 4.75141L0.93123 5.59258L0.854858 5.66492L0.930974 5.73753L4.42671 9.07236L4.49574 9.1382L4.56476 9.07236L12.069 1.91352L12.1449 1.84116L12.069 1.76881L11.1873 0.927644L11.1183 0.861826L11.0493 0.927611L4.49577 7.17353L1.95703 4.75166Z' fill='white' stroke='white' stroke-width='0.2'/%3E%3C/svg%3E%0A");
